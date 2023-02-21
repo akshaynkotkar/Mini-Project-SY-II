@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { View, TextInput, Button, Alert } from 'react-native';
 
-export default function App() {
+const ForgotPasswordScreen = () => {
+  const [email, setEmail] = useState('');
+
+  const handleForgotPassword = () => {
+    // Send password reset email to the user's email address
+    // You can use a library like Firebase Authentication to handle this process
+
+    Alert.alert('Password reset email sent', 'Please check your email to reset your password');
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View>
+      <TextInput
+        placeholder="Enter your email address"
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+        autoCapitalize="none"
+        autoCorrect={false}
+        style={{ borderWidth: 1, padding: 10, margin: 10 }}
+      />
+      <Button title="Reset Password" onPress={handleForgotPassword} />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default ForgotPasswordScreen;
